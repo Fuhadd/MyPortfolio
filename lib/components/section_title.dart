@@ -46,11 +46,26 @@ class SectionTitle extends StatelessWidget {
                   style:
                       TextStyle(fontWeight: FontWeight.w200, color: kTextColor),
                 ),
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                      fontWeight: FontWeight.bold, color: Colors.black),
-                )
+                Responsive.isMobile(context)
+                    ? Text(
+                        title,
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayMedium
+                            ?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                                fontSize: 30),
+                      )
+                    : Text(
+                        title,
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayMedium
+                            ?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                      )
               ],
             )
           ],

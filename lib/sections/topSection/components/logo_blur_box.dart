@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../utils/links.dart';
 import 'glass_content.dart';
 
 class LogoAndBlurBox extends StatelessWidget {
@@ -15,7 +16,26 @@ class LogoAndBlurBox extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image.asset("assets/images/logo_A1.png"),
+        Padding(
+          padding: const EdgeInsets.only(left: 20.0, right: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Image.asset("assets/images/logo_A1.png"),
+              InkWell(
+                  onTap: () {
+                    // context.read<ThemeCubit>().updateTheme(!state.isDarkThemeOn);
+                  },
+                  child: Image.network(
+                    IconUrls.darkIcon,
+                    // state.isDarkThemeOn ? IconUrls.darkIcon : IconUrls.lightIcon,
+                    height: 50,
+                    width: 50,
+                    // color: state.isDarkThemeOn ? Colors.black : Colors.white,
+                  )),
+            ],
+          ),
+        ),
         Spacer(),
         GlassContent(size: size),
         Spacer(flex: 3),

@@ -3,6 +3,7 @@ import 'package:web_app/components/default_button.dart';
 import 'package:web_app/components/section_title.dart';
 import 'package:web_app/constants.dart';
 
+import '../../components/store_utils.dart';
 import 'components/socal_card.dart';
 
 class ContactSection extends StatelessWidget {
@@ -11,6 +12,7 @@ class ContactSection extends StatelessWidget {
     return Container(
       // this height only for demo
       // height: 500,
+      padding: EdgeInsets.only(bottom: 30),
       width: double.infinity,
       decoration: BoxDecoration(
         color: Color(0xFFE8F0F9),
@@ -50,35 +52,47 @@ class ContactBox extends StatelessWidget {
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
+          bottomLeft: Radius.circular(20),
+          bottomRight: Radius.circular(20),
         ),
       ),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Wrap(
+            spacing: 30,
+            runSpacing: 40,
+            alignment: WrapAlignment.start,
+            crossAxisAlignment: WrapCrossAlignment.start,
             children: [
               SocalCard(
-                color: Color(0xFFD9FFFC),
-                iconSrc: "assets/images/skype.png",
+                color: Color(0xFFE8F0F9),
+                iconSrc: "assets/images/github.png",
                 name: 'TheFlutterWay',
-                press: () {},
+                press: () {
+                  StoreUtils.launchWeb("https://github.com/Fuhadd");
+                },
+              ),
+              SocalCard(
+                color: Color(0xFFD9FFFC),
+                iconSrc: "assets/images/linkedin.png",
+                name: 'TheFlutterWay',
+                press: () {
+                  StoreUtils.launchWeb(
+                      "https://www.linkedin.com/in/fuhad-aminu-613285165/");
+                },
               ),
               SocalCard(
                 color: Color(0xFFE4FFC7),
                 iconSrc: "assets/images/whatsapp.png",
                 name: 'TheFlutterWay',
-                press: () {},
-              ),
-              SocalCard(
-                color: Color(0xFFE8F0F9),
-                iconSrc: "assets/images/messanger.png",
-                name: 'TheFlutterWay',
-                press: () {},
+                press: () {
+                  StoreUtils.launchWeb("https://wa.me/+2349077154168");
+                },
               ),
             ],
           ),
-          SizedBox(height: kDefaultPadding * 2),
-          ContactForm(),
+          SizedBox(height: 20),
+          // ContactForm(),
         ],
       ),
     );

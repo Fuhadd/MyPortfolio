@@ -1,10 +1,8 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:web_app/constants.dart';
+import 'package:web_app/responsive/responsive.dart';
 
 import 'components/logo_blur_box.dart';
-import 'components/menu.dart';
 import 'components/person_pic.dart';
 
 class TopSection extends StatelessWidget {
@@ -24,20 +22,35 @@ class TopSection extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.only(top: kDefaultPadding),
         width: 1200,
-        child: Stack(
-          children: [
-            LogoAndBlurBox(size: size),
-            Positioned(
-              bottom: 0,
-              right: 0,
-              child: PersonPic(),
-            ),
-            Positioned(
-              bottom: 0,
-              child: Menu(),
-            ),
-          ],
-        ),
+        child: Responsive.isMobile(context)
+            ? Stack(
+                children: [
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: PersonPic(),
+                  ),
+                  LogoAndBlurBox(size: size),
+                  // Positioned(
+                  //   bottom: 0,
+                  //   child: Menu(),
+                  // ),
+                ],
+              )
+            : Stack(
+                children: [
+                  LogoAndBlurBox(size: size),
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: PersonPic(),
+                  ),
+                  // Positioned(
+                  //   bottom: 0,
+                  //   child: Menu(),
+                  // ),
+                ],
+              ),
       ),
     );
   }

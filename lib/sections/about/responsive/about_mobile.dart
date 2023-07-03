@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:web_app/components/default_button.dart';
 import 'package:web_app/components/my_outline_button.dart';
 import 'package:web_app/constants.dart';
 import 'package:web_app/sections/about/components/about_text_with_sign.dart';
@@ -52,19 +51,23 @@ class AboutMobile extends StatelessWidget {
             ],
           ),
           SizedBox(height: kDefaultPadding * 3),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          Wrap(
+            spacing: 30,
+            runSpacing: 40,
+            alignment: WrapAlignment.center,
+            crossAxisAlignment: WrapCrossAlignment.start,
             children: [
               MyOutlineButton(
                 imageSrc: "assets/images/hand.png",
                 text: "Hire Me!",
                 press: () {},
               ),
-              SizedBox(width: kDefaultPadding * 1.5),
-              DefaultButton(
+              // SizedBox(width: kDefaultPadding * 1.5),
+              MyOutlineButton(
                 imageSrc: "assets/images/download.png",
                 text: "Download CV",
                 press: () {},
+                // width: 100,
               ),
             ],
           ),

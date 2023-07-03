@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:web_app/responsive/responsive.dart';
 
 import '../../../constants.dart';
 
@@ -20,8 +21,9 @@ class GlassContent extends StatelessWidget {
         filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: kDefaultPadding * 2),
-          constraints:
-              BoxConstraints(maxWidth: 1110, maxHeight: size.height * 0.7),
+          constraints: !Responsive.isMobile(context)
+              ? BoxConstraints(maxWidth: 1110, maxHeight: size.height * 0.7)
+              : null,
           width: double.infinity,
           color: Colors.white.withOpacity(0),
           child: Column(

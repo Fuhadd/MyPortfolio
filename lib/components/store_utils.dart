@@ -43,4 +43,15 @@ class StoreUtils {
       );
     }
   }
+
+  static Future<void> launchWeb(String webUrl) async {
+    String url = webUrl;
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(
+        uri,
+        mode: LaunchMode.externalApplication,
+      );
+    }
+  }
 }
