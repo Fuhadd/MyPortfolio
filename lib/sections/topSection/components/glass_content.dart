@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:web_app/responsive/responsive.dart';
+import 'package:web_app/theme/app_theme.dart';
 
 import '../../../constants.dart';
 
@@ -35,7 +36,7 @@ class GlassContent extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .headlineSmall
-                    ?.copyWith(color: Colors.white),
+                    ?.copyWith(color: Theme.of(context).textColor),
               ),
               Text(
                 "Aminu \nFuhad O.",
