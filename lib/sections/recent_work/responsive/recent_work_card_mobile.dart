@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:web_app/components/enum.dart';
 import 'package:web_app/components/generic_dialog.dart';
+import 'package:web_app/components/spacers.dart';
 import 'package:web_app/components/store_utils.dart';
 import 'package:web_app/models/RecentWork.dart';
 
@@ -25,7 +26,7 @@ class _MobileRecentWorkCardState extends State<MobileRecentWorkCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20.0, left: 10, right: 10),
+      padding: const EdgeInsets.only(bottom: 20.0, left: 20, right: 20),
       child: InkWell(
         onTap: () async {
           recentWorks[widget.index].id == 1
@@ -44,7 +45,7 @@ class _MobileRecentWorkCardState extends State<MobileRecentWorkCard> {
         },
         child: AnimatedContainer(
           duration: Duration(milliseconds: 200),
-          height: 520,
+          // height: 520,
           // width: 540,
           decoration: BoxDecoration(
             color: Colors.white,
@@ -67,8 +68,10 @@ class _MobileRecentWorkCardState extends State<MobileRecentWorkCard> {
                       )
                     : Image.asset(
                         recentWorks[widget.index].image,
-                        fit: BoxFit.cover,
-                        // fit: recentWorks[widget.index].id == 1 ? BoxFit.cover : null,
+                        // fit: BoxFit.cover,
+                        fit: recentWorks[widget.index].id == 1
+                            ? BoxFit.cover
+                            : null,
                       ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
@@ -76,14 +79,17 @@ class _MobileRecentWorkCardState extends State<MobileRecentWorkCard> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(recentWorks[widget.index].category.toUpperCase()),
+                      // Text(recentWorks[widget.index].category.toUpperCase()),
                       SizedBox(height: kDefaultPadding / 2),
                       Text(
                         recentWorks[widget.index].title,
                         style: Theme.of(context)
                             .textTheme
                             .headlineSmall
-                            ?.copyWith(height: 1.5, fontSize: 20),
+                            ?.copyWith(
+                                height: 1.5,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500),
                       ),
                       SizedBox(height: kDefaultPadding),
                       Wrap(
@@ -169,7 +175,8 @@ class _MobileRecentWorkCardState extends State<MobileRecentWorkCard> {
                             ),
                           ),
                         ),
-                      )
+                      ),
+                      verticalSpacer(5),
 
                       // Row(
                       //     children: [

@@ -8,10 +8,12 @@ class DefaultButton extends StatelessWidget {
     required this.imageSrc,
     required this.text,
     required this.press,
+    this.width,
   }) : super(key: key);
 
   final String imageSrc, text;
   final Function()? press;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class DefaultButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         padding: EdgeInsets.symmetric(
           vertical: kDefaultPadding,
-          horizontal: kDefaultPadding * 2.5,
+          horizontal: width ?? kDefaultPadding * 2.5,
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(50),
@@ -30,7 +32,7 @@ class DefaultButton extends StatelessWidget {
       child: Row(
         children: [
           Image.asset(imageSrc, height: 40),
-          SizedBox(width: kDefaultPadding),
+          SizedBox(width: width == null ? kDefaultPadding : 5),
           Text(text),
         ],
       ),
