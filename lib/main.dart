@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       //   inputDecorationTheme: kDefaultInputDecorationTheme,
       //   visualDensity: VisualDensity.adaptivePlatformDensity,
       // ),
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       theme: AppTheme.themeData(false, context),
       darkTheme: AppTheme.themeData(true, context),
       home: HomeScreen(),

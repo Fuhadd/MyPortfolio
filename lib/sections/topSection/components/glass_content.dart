@@ -43,7 +43,7 @@ class GlassContent extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 100,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Theme.of(context).textColor,
                   height: 1.5,
                 ),
               ),
@@ -52,7 +52,7 @@ class GlassContent extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .headlineSmall
-                    ?.copyWith(color: Colors.white),
+                    ?.copyWith(color: Theme.of(context).textColor),
               )
             ],
           ),
