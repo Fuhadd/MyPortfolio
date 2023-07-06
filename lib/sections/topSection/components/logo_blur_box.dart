@@ -1,15 +1,32 @@
 import 'package:flutter/material.dart';
 
 import '../../../utils/links.dart';
+import '../../service/theme_change.dart';
 import 'glass_content.dart';
 
-class LogoAndBlurBox extends StatelessWidget {
+class LogoAndBlurBox extends StatefulWidget {
   const LogoAndBlurBox({
     Key? key,
     required this.size,
   }) : super(key: key);
 
   final Size size;
+
+  @override
+  State<LogoAndBlurBox> createState() => _LogoAndBlurBoxState();
+}
+
+class _LogoAndBlurBoxState extends State<LogoAndBlurBox> {
+  ThemeMode _currentThemeMode = ThemeMode.light;
+
+  void _toggleThemeMode() {
+    setState(() {
+      ThemeProvider().toggleThem();
+      _currentThemeMode = _currentThemeMode == ThemeMode.light
+          ? ThemeMode.dark
+          : ThemeMode.light;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +41,7 @@ class LogoAndBlurBox extends StatelessWidget {
               Image.asset("assets/images/logo_A1.png"),
               InkWell(
                   onTap: () {
+                    _toggleThemeMode();
                     // context.read<ThemeCubit>().updateTheme(!state.isDarkThemeOn);
                   },
                   child: Image.network(
@@ -37,7 +55,7 @@ class LogoAndBlurBox extends StatelessWidget {
           ),
         ),
         Spacer(),
-        GlassContent(size: size),
+        GlassContent(size: widget.size),
         Spacer(flex: 3),
       ],
     );
