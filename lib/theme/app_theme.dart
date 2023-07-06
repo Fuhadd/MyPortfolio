@@ -5,7 +5,7 @@ import '../color/colors.dart';
 
 class AppTheme {
   static ThemeData themeData(bool isDarkTheme, BuildContext context) {
-    return isDarkTheme ? ThemeColors.lightTheme : ThemeColors.darkTheme;
+    return isDarkTheme ? ThemeColors.darkTheme : ThemeColors.lightTheme;
   }
 }
 
@@ -15,20 +15,20 @@ class ThemeColors {
     brightness: Brightness.light,
     fontFamily: 'Poppins',
     primaryColor: primaryColor,
-    scaffoldBackgroundColor: lightBackgroundColor,
+    // scaffoldBackgroundColor: lightBackgroundColor,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     appBarTheme: AppBarTheme(
       backgroundColor: lightBackgroundColor,
     ),
     textTheme: TextTheme(labelLarge: TextStyle(color: lightTextColor)),
-    // colorScheme: ColorScheme(primary: lightBackgroundColor)
+    // colorScheme: ColorScheme.light(background: Colors.white)
   );
 
   static final darkTheme = ThemeData(
     brightness: Brightness.dark,
     fontFamily: 'Poppins',
     primaryColor: primaryColor,
-    scaffoldBackgroundColor: const Color(0xFF00040F),
+    // scaffoldBackgroundColor: const Color(0xFF00040F),
     visualDensity: VisualDensity.adaptivePlatformDensity,
     textTheme: TextTheme(
       labelLarge: TextStyle(color: darkTextColor),
@@ -36,7 +36,7 @@ class ThemeColors {
     appBarTheme: AppBarTheme(
       backgroundColor: darkBackgroundColor,
     ),
-    // colorScheme: ColorScheme(background: darkBackgroundColor)
+    // colorScheme: ColorScheme.dark(background: Colors.black)
     // ,
   );
   static Brightness get currentSystemBrightness =>
