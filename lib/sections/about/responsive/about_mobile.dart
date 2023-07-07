@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:web_app/components/my_outline_button.dart';
+import 'package:web_app/components/store_utils.dart';
 import 'package:web_app/constants.dart';
 import 'package:web_app/sections/about/components/about_text_with_sign.dart';
 
+import '../../../utils/send_mail.dart';
 import '../components/about_section_text.dart';
 import '../components/experience_card.dart';
 
@@ -60,13 +62,18 @@ class AboutMobile extends StatelessWidget {
               MyOutlineButton(
                 imageSrc: "assets/images/hand.png",
                 text: "Hire Me!",
-                press: () {},
+                press: () {
+                  sendEmail();
+                },
               ),
               // SizedBox(width: kDefaultPadding * 1.5),
               MyOutlineButton(
                 imageSrc: "assets/images/download.png",
                 text: "Download CV",
-                press: () {},
+                press: () {
+                  StoreUtils.launchWeb(
+                      "https://drive.google.com/file/d/1msJVJREJtvISFrrZ8NKyrgCwMq_-9itc/view?usp=sharing");
+                },
                 // width: 100,
               ),
             ],

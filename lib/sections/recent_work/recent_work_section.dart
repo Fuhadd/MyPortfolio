@@ -12,6 +12,7 @@ import '../../responsive/responsive.dart';
 class RecentWorkSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       margin: EdgeInsets.only(top: kDefaultPadding * 6),
       width: double.infinity,
@@ -19,6 +20,7 @@ class RecentWorkSection extends StatelessWidget {
       // height: 600,
       decoration: BoxDecoration(
         color: Color(0xFFF7E8FF).withOpacity(0.3),
+        // color: Color(0xFFF7E8FF),
         image: DecorationImage(
           fit: BoxFit.cover,
           image: AssetImage("assets/images/recent_work_bg.png"),

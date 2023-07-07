@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:web_app/constants.dart';
 import 'package:web_app/responsive/responsive.dart';
 
+import 'components/dark_mode_switch.dart';
 import 'components/logo_blur_box.dart';
 import 'components/person_pic.dart';
 
 class TopSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     Size size = MediaQuery.of(context).size;
     return Container(
       alignment: Alignment.center,
@@ -16,7 +18,9 @@ class TopSection extends StatelessWidget {
       decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage("assets/images/background.png"),
+          image: isDark
+              ? AssetImage("assets/images/bg_img_2.png")
+              : AssetImage("assets/images/background.png"),
         ),
       ),
       child: Container(
@@ -31,10 +35,10 @@ class TopSection extends StatelessWidget {
                     child: PersonPic(),
                   ),
                   LogoAndBlurBox(size: size),
-                  // Positioned(
-                  //   bottom: 0,
-                  //   child: Menu(),
-                  // ),
+                  Positioned(
+                    top: 0,
+                    child: DarkModeSwitch(),
+                  ),
                 ],
               )
             : Stack(
@@ -45,10 +49,11 @@ class TopSection extends StatelessWidget {
                     right: 0,
                     child: PersonPic(),
                   ),
-                  // Positioned(
-                  //   bottom: 0,
-                  //   child: Menu(),
-                  // ),
+                  // LogoAndBlurBox(size: size),
+                  Positioned(
+                    top: 0,
+                    child: DarkModeSwitch(),
+                  ),
                 ],
               ),
       ),

@@ -20,7 +20,7 @@ class ServiceMobile extends StatelessWidget {
           subTitle: "My Strong Arenas",
         ),
         CarouselSlider.builder(
-          itemCount: services.length,
+          itemCount: services(context).length,
           itemBuilder: (BuildContext context, int itemIndex, int i) => Padding(
             padding: EdgeInsets.symmetric(vertical: 0.5),
             child: ServiceCard(

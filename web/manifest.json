@@ -1,11 +1,11 @@
 {
-    "name": "web_app",
-    "short_name": "web_app",
+    "name": "Aminu Fuhad",
+    "short_name": "Aminu FUhad",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Hello! I'm Aminu Fuhad, a Fullstack Mobile developer with expertise in Flutter, Swift, C#, ASP.NET, Firebase, Docker, SQL, Git, and microservices. I have a strong track record of delivering high-quality mobile solutions across industries like healthcare, HR, developer collaboration, video streaming, and finance. With a Bachelor's degree in Electrical Engineering, I bring analytical and problem-solving skills to create innovative mobile solutions. I'm passionate about technology and available for new opportunities. Let's create something amazing together!",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

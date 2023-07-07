@@ -23,6 +23,7 @@ class _SocalCardState extends State<SocalCard> {
   bool isHover = false;
   @override
   Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return FittedBox(
       child: InkWell(
         onTap: widget.press,
@@ -40,7 +41,9 @@ class _SocalCardState extends State<SocalCard> {
           decoration: BoxDecoration(
             color: widget.color,
             borderRadius: BorderRadius.circular(10),
-            boxShadow: [if (isHover) kDefaultCardShadow],
+            boxShadow: [
+              if (isHover) isDark ? kDarkCardShadow : kDefaultCardShadow
+            ],
           ),
           child: Row(
             children: [

@@ -33,7 +33,7 @@ class ServiceDesktopState extends State<ServiceDesktop> {
             runSpacing: height * 0.05,
             alignment: WrapAlignment.start,
             crossAxisAlignment: WrapCrossAlignment.start,
-            children: services
+            children: services(context)
                 .asMap()
                 .entries
                 .map(

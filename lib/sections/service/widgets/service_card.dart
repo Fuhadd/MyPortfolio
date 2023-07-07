@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:web_app/models/Service.dart';
+import 'package:web_app/theme/app_theme.dart';
 
 import '../../../constants.dart';
 
@@ -20,6 +21,8 @@ class _ServiceCardState extends State<ServiceCard> {
   Duration duration = Duration(milliseconds: 200);
   @override
   Widget build(BuildContext context) {
+    Color textColor = Theme.of(context).textColor;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return InkWell(
       onTap: () {},
       onHover: (value) {
@@ -34,9 +37,11 @@ class _ServiceCardState extends State<ServiceCard> {
         height: 350,
         width: 300,
         decoration: BoxDecoration(
-          color: services[widget.index].color,
+          color: services(context)[widget.index].color,
           borderRadius: BorderRadius.circular(10),
-          boxShadow: [if (isHover) kDefaultCardShadow],
+          boxShadow: [
+            if (isHover) isDark ? kDarkCardShadow : kDefaultCardShadow
+          ],
         ),
         child: Padding(
           padding: const EdgeInsets.only(
@@ -52,31 +57,33 @@ class _ServiceCardState extends State<ServiceCard> {
                 height: 120,
                 width: 120,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: isDark ? Colors.black : Colors.white,
                   shape: BoxShape.circle,
                   boxShadow: [
                     if (!isHover)
                       BoxShadow(
                         offset: Offset(0, 20),
                         blurRadius: 30,
-                        color: Colors.black.withOpacity(0.1),
+                        color: isDark
+                            ? Colors.grey.withOpacity(0.1)
+                            : Colors.black.withOpacity(0.1),
                       ),
                   ],
                 ),
                 child: Image.asset(
-                  services[widget.index].image,
+                  services(context)[widget.index].image,
                   fit: BoxFit.fill,
                 ),
               ),
               SizedBox(height: kDefaultPadding),
               Text(
-                services[widget.index].title,
+                services(context)[widget.index].title,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 15),
               ),
               SizedBox(height: kDefaultPadding),
               Text(
-                services[widget.index].content,
+                services(context)[widget.index].content,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 14),
               ),
@@ -84,12 +91,12 @@ class _ServiceCardState extends State<ServiceCard> {
               SizedBox(height: kDefaultPadding),
               Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: services[widget.index]
+                  children: services(context)[widget.index]
                       .tool
                       .map((e) => Row(
                             children: [
                               const Text('🛠   '),
-                              Text(e, style: TextStyle(color: Colors.black)),
+                              Text(e, style: TextStyle(color: textColor)),
                             ],
                           ))
                       .toList()),

@@ -9,13 +9,14 @@ import 'components/socal_card.dart';
 class ContactSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       // this height only for demo
       // height: 500,
       padding: EdgeInsets.only(bottom: 30),
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Color(0xFFE8F0F9),
+        color: isDark ? Color(0xFFE8F0F9).withOpacity(0.3) : Color(0xFFE8F0F9),
         image: DecorationImage(
           fit: BoxFit.cover,
           image: AssetImage("assets/images/bg_img_2.png"),
@@ -43,12 +44,13 @@ class ContactBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       constraints: BoxConstraints(maxWidth: 1110),
       margin: EdgeInsets.only(top: kDefaultPadding * 2),
       padding: EdgeInsets.all(kDefaultPadding * 3),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.background,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
@@ -65,26 +67,26 @@ class ContactBox extends StatelessWidget {
             crossAxisAlignment: WrapCrossAlignment.start,
             children: [
               SocalCard(
-                color: Color(0xFFE8F0F9),
+                color: isDark ? Color(0xFF454841) : Color(0xFFE8F0F9),
                 iconSrc: "assets/images/github.png",
-                name: 'TheFlutterWay',
+                name: 'Fuhadd         ',
                 press: () {
                   StoreUtils.launchWeb("https://github.com/Fuhadd");
                 },
               ),
               SocalCard(
-                color: Color(0xFFD9FFFC),
+                color: isDark ? Color(0xFF005049) : Color(0xFFD9FFFC),
                 iconSrc: "assets/images/linkedin.png",
-                name: 'TheFlutterWay',
+                name: 'Aminu Fuhad',
                 press: () {
                   StoreUtils.launchWeb(
                       "https://www.linkedin.com/in/fuhad-aminu-613285165/");
                 },
               ),
               SocalCard(
-                color: Color(0xFFE4FFC7),
+                color: isDark ? Color(0xFF444C3B) : Color(0xFFE4FFC7),
                 iconSrc: "assets/images/whatsapp.png",
-                name: 'TheFlutterWay',
+                name: 'Aminu Fuhad',
                 press: () {
                   StoreUtils.launchWeb("https://wa.me/+2349077154168");
                 },

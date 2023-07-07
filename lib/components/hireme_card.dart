@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:web_app/theme/app_theme.dart';
 
 import '../constants.dart';
+import '../utils/send_mail.dart';
 import 'default_button.dart';
 
 class HireMeCard extends StatelessWidget {
@@ -12,13 +14,15 @@ class HireMeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color textColor = Theme.of(context).textColor;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: EdgeInsets.all(kDefaultPadding * 2),
       constraints: BoxConstraints(maxWidth: 1110),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDark ? Colors.black : Colors.white,
         borderRadius: BorderRadius.circular(20),
-        boxShadow: [kDefaultShadow],
+        boxShadow: [isDark ? kDarkShadow : kDefaultShadow],
       ),
       child: isMobile
           ? Row(
@@ -56,7 +60,9 @@ class HireMeCard extends StatelessWidget {
                 DefaultButton(
                   text: "Hire Me!",
                   imageSrc: "assets/images/hand.png",
-                  press: () {},
+                  press: () {
+                    sendEmail();
+                  },
                 )
               ],
             )
@@ -71,7 +77,9 @@ class HireMeCard extends StatelessWidget {
                         Text(
                           "Starting New Project?",
                           style: TextStyle(
-                              fontSize: 42, fontWeight: FontWeight.bold),
+                              fontSize: 42,
+                              fontWeight: FontWeight.bold,
+                              color: textColor),
                         ),
                         SizedBox(height: kDefaultPadding / 2),
                         Text(
@@ -84,7 +92,9 @@ class HireMeCard extends StatelessWidget {
                   DefaultButton(
                     text: "Hire Me!",
                     imageSrc: "assets/images/hand.png",
-                    press: () {},
+                    press: () {
+                      sendEmail();
+                    },
                     width: 10,
                   )
                 ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:web_app/responsive/responsive.dart';
+import 'package:web_app/theme/app_theme.dart';
 
 import '../constants.dart';
 
@@ -17,6 +18,9 @@ class SectionTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color textColor = Theme.of(context).textColor;
+    Color textColor2 = Theme.of(context).textColor2;
+    Color textSubColor = Theme.of(context).textSubColor;
     return Padding(
       padding: EdgeInsets.only(left: Responsive.isDesktop(context) ? 0 : 40.0),
       child: Container(
@@ -30,7 +34,7 @@ class SectionTitle extends StatelessWidget {
               padding: EdgeInsets.only(bottom: 72),
               width: 8,
               height: 100,
-              color: Colors.black,
+              color: textColor,
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   color: color,
@@ -43,8 +47,8 @@ class SectionTitle extends StatelessWidget {
               children: [
                 Text(
                   subTitle,
-                  style:
-                      TextStyle(fontWeight: FontWeight.w200, color: kTextColor),
+                  style: TextStyle(
+                      fontWeight: FontWeight.w200, color: textSubColor),
                 ),
                 Responsive.isMobile(context)
                     ? Text(
@@ -54,7 +58,7 @@ class SectionTitle extends StatelessWidget {
                             .displayMedium
                             ?.copyWith(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black,
+                                color: textColor2,
                                 fontSize: 30),
                       )
                     : Text(
@@ -63,8 +67,7 @@ class SectionTitle extends StatelessWidget {
                             .textTheme
                             .displayMedium
                             ?.copyWith(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
+                                fontWeight: FontWeight.bold, color: textColor2),
                       )
               ],
             )

@@ -3,6 +3,7 @@ import 'package:web_app/components/enum.dart';
 import 'package:web_app/components/generic_dialog.dart';
 import 'package:web_app/components/store_utils.dart';
 import 'package:web_app/models/RecentWork.dart';
+import 'package:web_app/theme/app_theme.dart';
 
 import '../../../constants.dart';
 
@@ -24,6 +25,8 @@ class _TabletRecentWorkCardState extends State<TabletRecentWorkCard> {
   bool isHovered = false;
   @override
   Widget build(BuildContext context) {
+    Color textColor = Theme.of(context).textColor;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Padding(
       padding: const EdgeInsets.only(bottom: 20.0, left: 10, right: 10),
       child: InkWell(
@@ -47,7 +50,7 @@ class _TabletRecentWorkCardState extends State<TabletRecentWorkCard> {
           // height: 320,
           // width: 540,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: isDark ? Colors.black : Colors.white,
             borderRadius: BorderRadius.circular(10),
             boxShadow: [if (isHover) kDefaultCardShadow],
           ),
@@ -76,7 +79,8 @@ class _TabletRecentWorkCardState extends State<TabletRecentWorkCard> {
                           style: Theme.of(context)
                               .textTheme
                               .headlineSmall
-                              ?.copyWith(height: 1.5, fontSize: 20),
+                              ?.copyWith(
+                                  height: 1.5, fontSize: 20, color: textColor),
                         ),
                         SizedBox(height: kDefaultPadding),
                         Wrap(
@@ -88,7 +92,7 @@ class _TabletRecentWorkCardState extends State<TabletRecentWorkCard> {
                               .tool
                               .map(
                                 (e) => Text('🛠   $e',
-                                    style: TextStyle(color: Colors.black)),
+                                    style: TextStyle(color: textColor)),
                               )
                               .toList(),
                         ),
@@ -140,8 +144,10 @@ class _TabletRecentWorkCardState extends State<TabletRecentWorkCard> {
                                         decoration: TextDecoration.underline,
                                         color: isHovered
                                             ? Colors.white
-                                            : Color(0xFFA600FF)
-                                                .withOpacity(0.5),
+                                            : isDark
+                                                ? Color(0xFFA600FF)
+                                                : Color(0xFFA600FF)
+                                                    .withOpacity(0.5),
                                       ),
                                     ),
                                     SizedBox(
