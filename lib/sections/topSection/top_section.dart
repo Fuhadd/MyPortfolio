@@ -13,7 +13,7 @@ class TopSection extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Container(
       alignment: Alignment.center,
-      constraints: BoxConstraints(maxHeight: 900, minHeight: 700),
+      constraints: BoxConstraints(maxHeight: 750, minHeight: 700),
       width: double.infinity,
       decoration: BoxDecoration(
         image: DecorationImage(
