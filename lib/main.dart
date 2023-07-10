@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sizer/sizer.dart';
 import 'package:web_app/home_screen.dart';
 import 'package:web_app/theme/app_theme.dart';
 import 'package:web_app/themes/theme_manager.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(ProviderScope(child: MyApp()));
 }
 
@@ -38,15 +40,17 @@ class _MyAppState extends ConsumerState<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Aminu Fuhad',
-      // theme: lightTheme,
-      // darkTheme: darkTheme,
-      themeMode: ref.watch(themeStateProvider),
-      theme: AppTheme.themeData(false, context),
-      darkTheme: AppTheme.themeData(true, context),
-      home: HomeScreen(),
-    );
+    return Sizer(builder: (context, orientation, deviceType) {
+      return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Aminu Fuhad',
+        // theme: lightTheme,
+        // darkTheme: darkTheme,
+        themeMode: ref.watch(themeStateProvider),
+        theme: AppTheme.themeData(false, context),
+        darkTheme: AppTheme.themeData(true, context),
+        home: HomeScreen(),
+      );
+    });
   }
 }
