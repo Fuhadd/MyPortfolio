@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'dart:html' as html;
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:web_app/components/spacers.dart';
@@ -45,7 +46,15 @@ class HomeDesktop extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset("assets/images/logo_A1.png"),
+                GestureDetector(
+                    onTap: () {
+                      String userAgent = html.window.navigator.userAgent;
+                      print(html.document.body!
+                          .getAttribute("flt-renderer")!
+                          .contains("html"));
+                      print(userAgent);
+                    },
+                    child: Image.asset("assets/images/logo_A1.png")),
                 DarkModeSwitch()
               ],
             ),
